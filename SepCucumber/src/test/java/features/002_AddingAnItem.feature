@@ -13,7 +13,6 @@ Feature: Searching the Item from Web
     Then User should enter "Pixel 7 Pro 5G (Snow, 12GB RAM, 256GB Storage) Smartphone"
     And User should click on Search button
     Then User should select the "Pixel 7 Pro 5G (Snow, 12GB RAM, 256GB Storage) Smartphone" from the search page
-    #And User should click on Add to Cart button
     Then User should verify the Text as "Added to Cart"
     Then User should click on Logout link
     Then User should verify the page title as "Amazon Sign In"

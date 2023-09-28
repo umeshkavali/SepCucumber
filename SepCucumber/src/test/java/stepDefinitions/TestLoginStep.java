@@ -111,7 +111,7 @@ public class TestLoginStep
 	@Then("User should close the browser finally")
 	public void user_should_close_the_browser_finally() 
 	{
-	    driver.close();
+	    driver.quit();
 	}
 	
 //	**********************************************Searching An Item********************************************************
@@ -149,7 +149,6 @@ public class TestLoginStep
 	public void user_should_click_on_search_button() 
 	{
 	   tlp.ClickOnSearchButton();
-	   driver.navigate().refresh();
 	}
 
 	@Then("User should select the {string} from the search page")
@@ -164,10 +163,11 @@ public class TestLoginStep
 	  
 	  for(String winId:windowIds)
 	  {
-		 String title = driver.switchTo().window(string).getTitle();
+		 String title = driver.switchTo().window(winId).getTitle();
+		 Thread.sleep(2000);
 		  if(title.equals("Pixel 7 Pro 5G (Snow, 12GB RAM, 256GB Storage) Smartphone : Amazon.in: Electronics"))
 		  {
-			  tlp.ClickOnAddToCartButton();
+			  driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
 		  }
 	  }
 	  

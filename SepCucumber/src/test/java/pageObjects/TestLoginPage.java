@@ -153,10 +153,10 @@ public class TestLoginPage
 		txtSearchfield.sendKeys(pixel);
 	}
 	
-	public void ClickOnAddToCartButton()
-	{
-		btnAddToCart.click();
-	}
+//	public void ClickOnAddToCartButton()
+//	{
+//		btnAddToCart.click();
+//	}
 	
 	public void VerifyingTheTextAdded()
 	{
