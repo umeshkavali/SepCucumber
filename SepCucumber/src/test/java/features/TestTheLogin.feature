@@ -8,7 +8,7 @@ Feature: Working in a Login Feature
     Then User should click on Continue button
     And User enters Password as "Umesh@062"
     And User should click on the checkbox
-    And User dhould click on Signin button
+    And User should click on Signin button
     Then User should verify the page title as "Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in"
     Then User should click on Logout link
     Then User should verify the page title as "Amazon Sign In"

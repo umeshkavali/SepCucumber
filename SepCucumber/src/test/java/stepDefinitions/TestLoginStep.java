@@ -1,12 +1,16 @@
 package stepDefinitions;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Set;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import io.cucumber.java.en.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -70,11 +74,11 @@ public class TestLoginStep
 		tlp.CheckboxRememberMe();
 	}
 
-	@Then("User dhould click on Signin button")
+	@Then("User should click on Signin button")
 	public void user_dhould_click_on_signin_button() throws Exception
 	{
 		tlp.ClickSubmitButton();
-		Thread.sleep(3000);;
+		Thread.sleep(3000);
 	}
 
 	@Then("User should verify the page title as {string}")
@@ -83,7 +87,7 @@ public class TestLoginStep
 	   WebElement logo = driver.findElement(By.xpath("//a[@id='nav-logo-sprites']"));
 	   if(logo.isDisplayed())
 	   {
-		   System.out.println("Successfull");
+		   System.out.println("Page Title is:"+title);
 	   }
 	   
 	   else
@@ -108,6 +112,86 @@ public class TestLoginStep
 	public void user_should_close_the_browser_finally() 
 	{
 	    driver.close();
+	}
+	
+//	**********************************************Searching An Item********************************************************
+	
+		
+	@Then("User should select {string} from the dropdown")
+	public void user_should_select_from_the_dropdown(String string) throws Exception 
+	{
+		WebElement drpdown = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
+		
+		Select all = new Select(drpdown);
+		System.out.println(all);
+		all.selectByVisibleText("All Categories");
+		
+		// Getting the size of the Dropdown List
+		List<WebElement> drpvalues = all.getOptions();
+		System.out.println("Printing the total number of Dropdown Values:"+drpvalues.size());
+		
+		// Printing all the values in a Console Window
+		for(WebElement value:drpvalues)
+		{
+			System.out.println(value.getText());
+		}
+		
+		Thread.sleep(3000);
+	}
+
+	@Then("User should enter {string}")
+	public void user_should_enter(String pname) 
+	{
+	   tlp.EnterPixelInTheSearch(pname);
+	}
+
+	@Then("User should click on Search button")
+	public void user_should_click_on_search_button() 
+	{
+	   tlp.ClickOnSearchButton();
+	   driver.navigate().refresh();
+	}
+
+	@Then("User should select the {string} from the search page")
+	public void user_should_select_the_from_the_search_page(String string) throws Exception 
+	{
+	  WebElement pixel_Link = driver.findElement(By.linkText("Pixel 7 Pro 5G (Snow, 12GB RAM, 256GB Storage) Smartphone"));
+	  pixel_Link.click();
+	  Thread.sleep(3000);
+	  
+	  Set<String> windowIds = driver.getWindowHandles();
+	  System.out.println("Printing the Page Title ID's:"+windowIds);
+	  
+	  for(String winId:windowIds)
+	  {
+		 String title = driver.switchTo().window(string).getTitle();
+		  if(title.equals("Pixel 7 Pro 5G (Snow, 12GB RAM, 256GB Storage) Smartphone : Amazon.in: Electronics"))
+		  {
+			  tlp.ClickOnAddToCartButton();
+		  }
+	  }
+	  
+	}
+
+//	@Then("User should click on Add to Cart button")
+//	public void user_should_click_on_add_to_cart_button() 
+//	{
+//	  tlp.ClickOnAddToCartButton();
+//	}
+
+	@Then("User should verify the Text as {string}")
+	public void user_should_verify_the_text_as(String text) 
+	{
+	    String confirmation = driver.findElement(By.xpath("//span[@class='a-size-medium-plus a-color-base sw-atc-text a-text-bold']")).getText();
+	    if(confirmation.equals("Added to Cart"))
+	    {
+	    	System.out.println("We are good until now");
+	    }
+	    
+	    else
+	    {
+	    	System.out.println("We are in the wring path");
+	    }
 	}
 
 }

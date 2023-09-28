@@ -56,6 +56,27 @@ public class TestLoginPage
 	@CacheLookup
 	WebElement lnkLogout;
 	
+	@FindBy(xpath="//select[@id='searchDropdownBox']")
+	@CacheLookup
+	WebElement btnDrpdown;
+	
+	@FindBy(xpath="//input[@id='twotabsearchtextbox']")
+	@CacheLookup
+	WebElement txtSearchfield;
+	
+	@FindBy(xpath="//input[@id='nav-search-submit-button']")
+	@CacheLookup
+	WebElement btnSearch;
+	
+	@FindBy(xpath="//input[@id='add-to-cart-button']")
+	@CacheLookup
+	WebElement btnAddToCart;
+	
+	@FindBy(xpath="//span[@class='a-size-medium-plus a-color-base sw-atc-text a-text-bold']")
+	@CacheLookup
+	WebElement getTxt;
+	
+
 	public void clickHelloSignInIn()
 	{
 		btnhello_SignIn.click();
@@ -107,4 +128,59 @@ public class TestLoginPage
 	{
 		lnkLogout.click();
 	}
+	
+	
+//	*************************************Searching Item**********************************************************
+	
+	
+	public void ClickOnAllDropDown()
+	{
+		btnDrpdown.click();
+	}
+	
+	public void EnteringTheTextInToSearchBox(String search)
+	{
+		txtSearchfield.sendKeys(search);
+	}
+	
+	public void ClickOnSearchButton()
+	{
+		btnSearch.click();
+	}
+	
+	public void EnterPixelInTheSearch(String pixel)
+	{
+		txtSearchfield.sendKeys(pixel);
+	}
+	
+	public void ClickOnAddToCartButton()
+	{
+		btnAddToCart.click();
+	}
+	
+	public void VerifyingTheTextAdded()
+	{
+		getTxt.getText();
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
