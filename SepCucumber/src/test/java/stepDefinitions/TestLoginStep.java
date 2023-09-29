@@ -114,7 +114,7 @@ public class TestLoginStep
 	    driver.quit();
 	}
 	
-//	**********************************************Searching An Item********************************************************
+//	**********************************************Adding An Item to Cart********************************************************
 	
 		
 	@Then("User should select {string} from the dropdown")
@@ -192,6 +192,26 @@ public class TestLoginStep
 	    {
 	    	System.out.println("We are in the wring path");
 	    }
+	}
+	
+//	************************************Deleting the Item from Cart************************************
+	
+	@Then("User should click on Cart button")
+	public void user_should_click_on_cart_button() 
+	{
+		tlp.ClickOnCart();
+	}
+
+	@Then("User should verify the {string} header")
+	public void user_should_verify_the_header(String header) 
+	{
+		tlp.EmptyCart();
+	}
+
+	@Then("User should click on delete button")
+	public void user_should_click_on_delete_button()
+	{
+		tlp.DeleteAnItemFromCart();	    
 	}
 
 }

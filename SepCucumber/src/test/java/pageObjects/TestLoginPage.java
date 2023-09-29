@@ -76,6 +76,18 @@ public class TestLoginPage
 	@CacheLookup
 	WebElement getTxt;
 	
+	@FindBy(xpath="//span[@id='nav-cart-count']")
+	@CacheLookup
+	WebElement cartBtn;
+	
+	@FindBy(xpath="//input[@value='Delete']")
+	@CacheLookup
+	WebElement btnDelete;
+	
+	@FindBy(xpath="//h1[normalize-space()='Your Amazon Cart is empty.']")
+	@CacheLookup
+	WebElement emptyCartTxt;
+	
 
 	public void clickHelloSignInIn()
 	{
@@ -130,7 +142,7 @@ public class TestLoginPage
 	}
 	
 	
-//	*************************************Searching Item**********************************************************
+//	*************************************Adding an Item to the Cart**********************************************************
 	
 	
 	public void ClickOnAllDropDown()
@@ -165,11 +177,22 @@ public class TestLoginPage
 
 	
 	
+//	*************************************Delete an Item from the Cart**********************************************************
 	
+	public void ClickOnCart()
+	{
+		cartBtn.click();
+	}
 	
+	public void DeleteAnItemFromCart()
+	{
+		btnDelete.click();
+	}
 	
-	
-	
+	public void EmptyCart()
+	{
+		System.out.println(emptyCartTxt.getText());
+	}
 	
 	
 	
