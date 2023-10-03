@@ -14,12 +14,12 @@ import org.openqa.selenium.support.ui.Select;
 
 import io.cucumber.java.en.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import pageObjects.TestLoginPage;
+import pageObjects.PageClass;
 
-public class TestLoginStep 
+public class StepClass 
 {
 	public WebDriver driver;
-	public TestLoginPage tlp;
+	public PageClass tlp;
 	
 	@Given("User launch Chrome Browser")
 	public void user_launch_chrome_browser() 
@@ -27,7 +27,7 @@ public class TestLoginStep
 	   WebDriverManager.chromedriver().setup();
 	   driver = new ChromeDriver();
 	   
-	   tlp = new TestLoginPage(driver);
+	   tlp = new PageClass(driver);
 	   
 	   driver.manage().window().maximize();
 	   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
