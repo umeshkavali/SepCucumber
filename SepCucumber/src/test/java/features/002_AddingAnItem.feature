@@ -10,9 +10,9 @@ Feature: Searching the Item from Web
     And User should click on the checkbox
     And User should click on Signin button
     And User should select "All Categories" from the dropdown
-    Then User should enter "Pixel 7 Pro 5G (Snow, 12GB RAM, 256GB Storage) Smartphone"
+    Then User should enter "Pixel 7a 5G (Sea, 8GB RAM, 128GB Storage)"
     And User should click on Search button
-    Then User should select the "Pixel 7 Pro 5G (Snow, 12GB RAM, 256GB Storage) Smartphone" from the search page
+    Then User should select the "Pixel 7a 5G (Sea, 8GB RAM, 128GB Storage)" from the search page
     Then User should verify the Text as "Added to Cart"
     Then User should click on Logout link
     Then User should verify the page title as "Amazon Sign In"

@@ -111,6 +111,8 @@ public class StepClass
 	@Then("User should close the browser finally")
 	public void user_should_close_the_browser_finally() 
 	{
+		
+		
 	    driver.quit();
 	}
 	
